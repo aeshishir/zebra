@@ -25,11 +25,7 @@
       --radius:24px;
     }
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
+    *{margin:0;padding:0;box-sizing:border-box;}
 
     body{
       background:var(--bg);
@@ -37,18 +33,6 @@
       font-family:'Inter',sans-serif;
       min-height:100vh;
       overflow-x:hidden;
-      position:relative;
-    }
-
-    body::before{
-      content:'';
-      position:fixed;
-      inset:0;
-      background-image:
-        radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
-      background-size:4px 4px;
-      opacity:.3;
-      pointer-events:none;
     }
 
     .wrapper{
@@ -59,25 +43,10 @@
       min-height:100vh;
     }
 
-    .left-panel{
-      display:flex;
-      flex-direction:column;
-      gap:25px;
-    }
-
     .title{
       font-family:'Cormorant Garamond', serif;
       font-size:4rem;
-      line-height:1;
       font-weight:600;
-      letter-spacing:-1px;
-    }
-
-    .subtitle{
-      margin-top:10px;
-      color:var(--muted);
-      font-size:1rem;
-      letter-spacing:.5px;
     }
 
     .calendar-card{
@@ -85,26 +54,11 @@
       border-radius:var(--radius);
       padding:30px;
       box-shadow:var(--shadow);
-      backdrop-filter:blur(10px);
-      transition:.3s ease;
     }
 
-    .calendar-card:hover{
-      transform:translateY(-3px);
-    }
-
-    #calendar{
-      min-height:700px;
-    }
-
-    .right-panel{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
+    #calendar{min-height:700px;}
 
     .booking-card{
-      width:100%;
       background:var(--card);
       border-radius:32px;
       padding:35px;
@@ -113,49 +67,12 @@
       top:30px;
     }
 
-    .card-title{
-      font-family:'Cormorant Garamond', serif;
-      font-size:2rem;
-      margin-bottom:8px;
-    }
-
-    .small-note{
-      color:var(--muted);
-      margin-bottom:30px;
-      font-size:.95rem;
-    }
-
-    .form-group{
-      margin-bottom:18px;
-    }
-
-    label{
-      display:block;
-      margin-bottom:8px;
-      font-size:.9rem;
-      color:var(--muted);
-    }
-
     input{
       width:100%;
-      padding:14px 16px;
+      padding:14px;
       border:none;
       border-radius:16px;
       background:var(--soft);
-      font-size:1rem;
-      outline:none;
-      transition:.2s;
-    }
-
-    input:focus{
-      background:white;
-      box-shadow:0 0 0 2px rgba(0,0,0,0.05);
-    }
-
-    .grid-2{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
     }
 
     .btn{
@@ -164,126 +81,26 @@
       border:none;
       border-radius:18px;
       cursor:pointer;
-      font-size:1rem;
-      transition:.25s ease;
       margin-top:10px;
     }
 
-    .btn-check{
-      background:#2f2f2f;
-      color:white;
-    }
-
-    .btn-check:hover{
-      opacity:.92;
-      transform:translateY(-1px);
-    }
-
-    .btn-book{
-      background:var(--green);
-      color:white;
-    }
-
-    .btn-book:disabled{
-      opacity:.4;
-      cursor:not-allowed;
-    }
+    .btn-check{background:#2f2f2f;color:white;}
+    .btn-book{background:var(--green);color:white;}
 
     .message{
-      margin-top:18px;
-      padding:14px;
-      border-radius:16px;
+      margin-top:15px;
+      padding:12px;
+      border-radius:12px;
       display:none;
-      font-size:.95rem;
     }
 
-    .success{
-      background:#edf5ed;
-      color:#456345;
-      display:block;
-    }
-
-    .error{
-      background:#f8e9e6;
-      color:#8f5348;
-      display:block;
-    }
-
-    .extras{
-      margin-top:30px;
-      padding-top:25px;
-      border-top:1px solid rgba(0,0,0,0.05);
-      display:flex;
-      flex-direction:column;
-      gap:14px;
-      color:var(--muted);
-      font-size:.92rem;
-    }
-
-    .moon{
-      position:absolute;
-      top:22px;
-      right:28px;
-      font-size:1.3rem;
-      opacity:.6;
-    }
-
-    .occupancy{
-      width:100%;
-      height:10px;
-      background:var(--soft);
-      border-radius:999px;
-      overflow:hidden;
-      margin-top:8px;
-    }
-
-    .occupancy-bar{
-      width:35%;
-      height:100%;
-      background:#b68b7a;
-      border-radius:999px;
-    }
-
-    .footer-note{
-      margin-top:24px;
-      font-size:.82rem;
-      color:var(--muted);
-      text-align:center;
-    }
-
-    .fc-theme-standard td,
-    .fc-theme-standard th,
-    .fc-theme-standard .fc-scrollgrid{
-      border-color:#efe9e2;
-    }
-
-    .fc .fc-button{
-      background:#2f2f2f !important;
-      border:none !important;
-      border-radius:14px !important;
-      padding:8px 12px !important;
-    }
+    .success{background:#edf5ed;color:#456345;display:block;}
+    .error{background:#f8e9e6;color:#8f5348;display:block;}
 
     .fc-event{
       background:#c97c6d !important;
       border:none !important;
       border-radius:10px !important;
-      padding:3px;
-    }
-
-    @media(max-width:980px){
-      .wrapper{
-        grid-template-columns:1fr;
-        padding:24px;
-      }
-
-      .title{
-        font-size:3rem;
-      }
-
-      #calendar{
-        min-height:500px;
-      }
     }
   </style>
 </head>
@@ -293,242 +110,189 @@
 <div class="wrapper">
 
   <!-- LEFT -->
-  <div class="left-panel">
-
-    <div>
-      <h1 class="title">Zeba-Rafat’s Cozy Home Stay ✦</h1>
-      <p class="subtitle">
-        A tiny peaceful stay for friends & guests
-      </p>
-    </div>
+  <div>
+    <h1 class="title">Zeba-Rafat’s Cozy Home Stay ✦</h1>
 
     <div class="calendar-card">
       <div id="calendar"></div>
     </div>
-
   </div>
 
   <!-- RIGHT -->
-  <div class="right-panel">
+  <div class="booking-card">
 
-    <div class="booking-card">
+    <h2>Reserve Stay</h2>
 
-      <div class="moon">☾</div>
+    <input id="guestName" placeholder="Name">
+    <input type="date" id="arrivalDate">
+    <input type="time" id="arrivalTime">
+    <input type="date" id="departureDate">
+    <input type="time" id="departureTime">
 
-      <h2 class="card-title">Reserve Your Stay</h2>
+    <button class="btn btn-check" onclick="checkAvailability()">
+      Check Availability
+    </button>
 
-      <p class="small-note">
-        Tea available ☕ · quiet mornings · warm lights
-      </p>
+    <button class="btn btn-book" id="reserveBtn" disabled onclick="reserveStay()">
+      Reserve
+    </button>
 
-      <div class="form-group">
-        <label>Guest Name</label>
-        <input type="text" id="guestName" placeholder="Your name">
-      </div>
-
-      <div class="grid-2">
-        <div class="form-group">
-          <label>Arrival Date</label>
-          <input type="date" id="arrivalDate">
-        </div>
-
-        <div class="form-group">
-          <label>Arrival Time</label>
-          <input type="time" id="arrivalTime">
-        </div>
-      </div>
-
-      <div class="grid-2">
-        <div class="form-group">
-          <label>Departure Date</label>
-          <input type="date" id="departureDate">
-        </div>
-
-        <div class="form-group">
-          <label>Departure Time</label>
-          <input type="time" id="departureTime">
-        </div>
-      </div>
-
-      <button class="btn btn-check" onclick="checkAvailability()">
-        Check Availability
-      </button>
-
-      <button class="btn btn-book" id="reserveBtn" disabled onclick="reserveStay()">
-        Reserve Stay
-      </button>
-
-      <div id="message" class="message"></div>
-
-      <div class="extras">
-        <div>
-          Occupancy this month
-          <div class="occupancy">
-            <div class="occupancy-bar"></div>
-          </div>
-        </div>
-
-        <div>☁ Today feels calm and cloudy</div>
-        <div>✦ Soft blankets included</div>
-        <div>🌿 Please enjoy the quiet atmosphere</div>
-      </div>
-
-      <div class="footer-note">
-        A playful little GitHub guestbook
-      </div>
-
-    </div>
+    <div id="message" class="message"></div>
 
   </div>
 
 </div>
 
-<!-- FullCalendar -->
+<!-- LIBRARIES -->
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-  
+
+<!-- OPTIONAL: config.js (GitHub-safe deployment) -->
+<script src="config.js"></script>
+
 <script>
-  const supabaseUrl = 'https://lzxrcouywpolimurnyqg.supabase.co';
-const supabaseKey = 'ttWqaD!@$X4z2*B';
+
+if (!window.APP_CONFIG) {
+  console.error("Missing config.js");
+}
 
 const supabase = window.supabase.createClient(
-  supabaseUrl,
-  supabaseKey
+  window.APP_CONFIG?.SUPABASE_URL || "",
+  window.APP_CONFIG?.SUPABASE_ANON_KEY || ""
 );
+
 let bookings = [];
+let availabilityChecked = false;
 
-  let availabilityChecked = false;
-
-  const calendarEl = document.getElementById('calendar');
-
-  const calendar = new FullCalendar.Calendar(calendarEl, {
+const calendar = new FullCalendar.Calendar(
+  document.getElementById('calendar'),
+  {
     initialView: 'dayGridMonth',
     height: 'auto',
-    events: bookings,
-    fixedWeekCount: false,
-    headerToolbar:{
-      left:'prev,next',
-      center:'title',
-      right:''
+    events: [],
+    headerToolbar: {
+      left: 'prev,next',
+      center: 'title',
+      right: ''
     }
-  });
+  }
+);
 
-  calendar.render();
-async function loadBookings(){
 
-  const { data, error } = await supabase
-    .from('bookings')
-    .select('*');
+async function loadBookings() {
+  try {
+    const { data, error } = await supabase
+      .from('bookings')
+      .select('*');
 
-  if(error){
-    console.error(error);
+    if (error) throw error;
+
+    bookings = (data || []).map(b => ({
+      title: b.guest_name || "Guest",
+      start: new Date(b.arrival).toISOString(),
+      end: new Date(b.departure).toISOString()
+    }));
+
+    calendar.getEventSources().forEach(s => s.remove());
+    calendar.addEventSource(bookings);
+
+  } catch (err) {
+    console.error("Load error:", err);
+
+    document.getElementById('message').className = 'message error';
+    document.getElementById('message').innerHTML =
+      'Failed to load calendar data ⚠️';
+  }
+}
+
+
+function checkAvailability() {
+
+  const arrival = new Date(
+    document.getElementById('arrivalDate').value +
+    'T' +
+    document.getElementById('arrivalTime').value
+  );
+
+  const departure = new Date(
+    document.getElementById('departureDate').value +
+    'T' +
+    document.getElementById('departureTime').value
+  );
+
+  const message = document.getElementById('message');
+  const reserveBtn = document.getElementById('reserveBtn');
+
+  if (arrival >= departure) {
+    message.className = 'message error';
+    message.innerHTML = 'Invalid date range';
+    reserveBtn.disabled = true;
     return;
   }
 
-  bookings = data.map(b => ({
-    title: b.guest_name,
-    start: b.arrival,
-    end: b.departure
-  }));
+  const overlap = bookings.some(b => {
+    const start = new Date(b.start);
+    const end = new Date(b.end);
+    return arrival < end && departure > start;
+  });
 
-  calendar.removeAllEvents();
-  calendar.addEventSource(bookings);
+  if (overlap) {
+    message.className = 'message error';
+    message.innerHTML = 'Dates already booked';
+    reserveBtn.disabled = true;
+    availabilityChecked = false;
+  } else {
+    message.className = 'message success';
+    message.innerHTML = 'Available ✨';
+    reserveBtn.disabled = false;
+    availabilityChecked = true;
+  }
 }
 
-loadBookings();
-  
-  function checkAvailability(){
+async function reserveStay() {
 
-    const arrival = new Date(
-      document.getElementById('arrivalDate').value +
-      'T' +
-      document.getElementById('arrivalTime').value
-    );
+  if (!availabilityChecked) return;
 
-    const departure = new Date(
-      document.getElementById('departureDate').value +
-      'T' +
-      document.getElementById('departureTime').value
-    );
+  const guest = document.getElementById('guestName').value;
 
-    const message = document.getElementById('message');
-    const reserveBtn = document.getElementById('reserveBtn');
-
-    if(arrival >= departure){
-      message.className = 'message error';
-      message.innerHTML = 'Departure must be after arrival ✦';
-      reserveBtn.disabled = true;
-      return;
-    }
-
-    let overlap = bookings.some(booking => {
-      const existingStart = new Date(booking.start);
-      const existingEnd = new Date(booking.end);
-
-      return arrival < existingEnd && departure > existingStart;
-    });
-
-    if(overlap){
-      message.className = 'message error';
-      message.innerHTML = 'Those dates are already taken 🌙';
-      reserveBtn.disabled = true;
-      availabilityChecked = false;
-    }else{
-      message.className = 'message success';
-      message.innerHTML = 'Your stay can be reserved ✨';
-      reserveBtn.disabled = false;
-      availabilityChecked = true;
-    }
-  }
-
-  async function reserveStay(){
-
-  if(!availabilityChecked) return;
-
-  const guestName = document.getElementById('guestName').value;
-
-  const arrivalDate =
+  const arrival =
     document.getElementById('arrivalDate').value +
     'T' +
     document.getElementById('arrivalTime').value;
 
-  const departureDate =
+  const departure =
     document.getElementById('departureDate').value +
     'T' +
     document.getElementById('departureTime').value;
 
   const { error } = await supabase
     .from('bookings')
-    .insert([
-      {
-        guest_name: guestName,
-        arrival: arrivalDate,
-        departure: departureDate
-      }
-    ]);
+    .insert([{
+      guest_name: guest,
+      arrival,
+      departure
+    }]);
 
-  if(error){
+  const msg = document.getElementById('message');
+
+  if (error) {
     console.error(error);
-
-    document.getElementById('message').className =
-      'message error';
-
-    document.getElementById('message').innerHTML =
-      'Could not save booking 🌙';
-
+    msg.className = 'message error';
+    msg.innerHTML = 'Booking failed ⚠️';
     return;
   }
 
-  document.getElementById('message').className =
-    'message success';
+  msg.className = 'message success';
+  msg.innerHTML = 'Booking saved ✨';
 
-  document.getElementById('message').innerHTML =
-    'Reservation saved successfully ✨';
-
+  reserveBtn.disabled = true;
   loadBookings();
-
-  document.getElementById('reserveBtn').disabled = true;
 }
+
+document.addEventListener('DOMContentLoaded', async () => {
+  calendar.render();
+  await loadBookings();
+});
 </script>
 
 </body>
