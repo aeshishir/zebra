@@ -385,20 +385,17 @@
 
 <!-- FullCalendar -->
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  
 <script>
-  const bookings = [
-    {
-      title: "Booked",
-      start: "2026-05-14",
-      end: "2026-05-17"
-    },
-    {
-      title: "Booked",
-      start: "2026-05-22",
-      end: "2026-05-25"
-    }
-  ];
+  const supabaseUrl = 'https://lzxrcouywpolimurnyqg.supabase.co';
+const supabaseKey = 'ttWqaD!@$X4z2*B';
+
+const supabase = window.supabase.createClient(
+  supabaseUrl,
+  supabaseKey
+);
+let bookings = [];
 
   let availabilityChecked = false;
 
@@ -417,7 +414,29 @@
   });
 
   calendar.render();
+async function loadBookings(){
 
+  const { data, error } = await supabase
+    .from('bookings')
+    .select('*');
+
+  if(error){
+    console.error(error);
+    return;
+  }
+
+  bookings = data.map(b => ({
+    title: b.guest_name,
+    start: b.arrival,
+    end: b.departure
+  }));
+
+  calendar.removeAllEvents();
+  calendar.addEventSource(bookings);
+}
+
+loadBookings();
+  
   function checkAvailability(){
 
     const arrival = new Date(
@@ -462,29 +481,54 @@
     }
   }
 
-  function reserveStay(){
+  async function reserveStay(){
 
-    if(!availabilityChecked) return;
+  if(!availabilityChecked) return;
 
-    const guestName = document.getElementById('guestName').value;
-    const arrivalDate = document.getElementById('arrivalDate').value;
-    const departureDate = document.getElementById('departureDate').value;
+  const guestName = document.getElementById('guestName').value;
 
-    bookings.push({
-      title: guestName || 'Booked',
-      start: arrivalDate,
-      end: departureDate
-    });
+  const arrivalDate =
+    document.getElementById('arrivalDate').value +
+    'T' +
+    document.getElementById('arrivalTime').value;
 
-    calendar.removeAllEvents();
-    calendar.addEventSource(bookings);
+  const departureDate =
+    document.getElementById('departureDate').value +
+    'T' +
+    document.getElementById('departureTime').value;
 
-    document.getElementById('message').className = 'message success';
+  const { error } = await supabase
+    .from('bookings')
+    .insert([
+      {
+        guest_name: guestName,
+        arrival: arrivalDate,
+        departure: departureDate
+      }
+    ]);
+
+  if(error){
+    console.error(error);
+
+    document.getElementById('message').className =
+      'message error';
+
     document.getElementById('message').innerHTML =
-      'Reservation added locally ✨<br><small>Connect GitHub API to persist bookings.</small>';
+      'Could not save booking 🌙';
 
-    document.getElementById('reserveBtn').disabled = true;
+    return;
   }
+
+  document.getElementById('message').className =
+    'message success';
+
+  document.getElementById('message').innerHTML =
+    'Reservation saved successfully ✨';
+
+  loadBookings();
+
+  document.getElementById('reserveBtn').disabled = true;
+}
 </script>
 
 </body>
