@@ -1,0 +1,10 @@
+let bookings = [];
+
+fetch('bookings.json')
+  .then(res => res.json())
+  .then(data => {
+    bookings = data;
+
+    calendar.removeAllEvents();
+    calendar.addEventSource(bookings);
+  });
